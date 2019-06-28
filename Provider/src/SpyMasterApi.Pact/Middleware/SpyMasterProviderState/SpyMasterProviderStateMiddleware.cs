@@ -12,6 +12,7 @@ namespace SpyMasterApi.Pact.Middleware.SpyMasterProviderState
 
         public SpyMasterProviderStateMiddleware(RequestDelegate next) : base(next)
         {
+            //* Setup the provider states the pact is asking for..
 //            _providerStateSeeder = new SpyMasterProviderStateBuilder()
 //                .ForProviderState(new ProviderState("SpyLens FrontEnd", "An agent '007' exists"))
 //                .SeedData(service => service.Add(new AgentDetails("Roger", "Moore", new DateTime(1968, 03, 02), 80)))

@@ -19,7 +19,13 @@
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
-           throw new NotImplementedException("TODO: Return the spy details!");
+            throw new NotImplementedException("TODO: Return the spy details!");
+//            var agent = _agentService.Get(id);
+//
+//            return new ObjectResult(agent)
+//            {
+//                StatusCode = (int)HttpStatusCode.OK
+//            };
         }
     }
 }
