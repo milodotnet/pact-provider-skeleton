@@ -20,22 +20,15 @@ namespace SpyMasterApi.Pact
         public void ConfigureServices(IServiceCollection services)
         {
             _apiStartup.ConfigureServices(services);
-            services.AddSingleton<IAgentsService, InMemoryAgentsService>();
+            //* register an in memory db to that your provider state middleware can put data into
+            //services.AddSingleton<IAgentsService, InMemoryAgentsService>();
+            
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var providerStateSeeder = ConfigureProviderStates();
-            app.UseMiddleware<SpyMasterProviderStateMiddleware>(providerStateSeeder);
+            //* Register the middleware to intercept provider state requests use the preconfigured provider states
+            //app.UseMiddleware<SpyMasterProviderStateMiddleware>();
             _apiStartup.Configure(app, env);
-        }
-
-        private static SpyMasterInMemoryProviderStateSeeder ConfigureProviderStates()
-        {
-            var providerStateSeeder = new SpyMasterInMemoryProviderStateSeeder();
-            providerStateSeeder
-                .AddProviderStateSetup(new ProviderState("SpyLens FrontEnd", "An agent '007' exists"),
-                    service => service.Add(new AgentDetails("Roger", "Moore", new DateTime(1968, 03, 02), 80)));
-            return providerStateSeeder;
         }
     }
 }

@@ -42,12 +42,14 @@ namespace SpyMasterApi.Pact
                 PublishVerificationResults = !string.IsNullOrEmpty("1.0.0")
             };
             IPactVerifier pactVerifier = new PactVerifier(pactVerifierConfig);
-            
+
+            var providerName = "SpyMasterApi";
+            var consumerName = "SpyLens Frontend";
+
             pactVerifier                    
                 .ProviderState($"{baseAddress}/{SpyMasterProviderStateMiddleware.ProviderStatePath}")
-                .ServiceProvider("SpyMasterApi", baseAddress)
-                .HonoursPactWith("SpyLens Frontend")
-                //.PactUri($"http://localhost/pacts/provider/SpyMaster%20Api/consumer/SpyLens%20FrontEnd/latest")
+                .ServiceProvider(providerName, baseAddress)
+                .HonoursPactWith(consumerName)
                 .PactUri(@"c:\\git\\pacts\\spylens_frontend-spymaster_api.json")
                 .Verify();
             await webHost.StopAsync();

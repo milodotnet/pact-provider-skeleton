@@ -19,4 +19,8 @@
     <ProjectReference Include="..\SpyMasterApi\SpyMasterApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\SpyMasterProviderState\" />
+  </ItemGroup>
+
 </Project>

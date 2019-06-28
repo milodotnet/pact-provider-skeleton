@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using SpyMasterApi.Services;
-
-namespace SpyMasterApi.Controllers
+﻿namespace SpyMasterApi.Controllers
 {
+    using System;
+    using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Services;
+
     [Route("[controller]")]
     [ApiController]
     public class AgentsController : ControllerBase
@@ -23,13 +19,7 @@ namespace SpyMasterApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
-            var agent = _agentService.Get(id);
-
-            return new ObjectResult(agent)
-            {
-                StatusCode = (int)HttpStatusCode.OK
-            };
+           throw new NotImplementedException("TODO: Return the spy details!");
         }
-
     }
 }
